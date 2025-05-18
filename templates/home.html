@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Service Providers</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+  Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+  <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+
+    <h1>Available Service Providers</h1>
+
+    {% if service_providers %}
+        <ul>
+        {% for provider in service_providers %}
+            <li>
+                <strong>{{ provider.name }}</strong> - {{ provider.service_type }}
+                {% if provider.verified %}✔️{% endif %}
+                <br>Phone: {{ provider.phone }}
+                <br>Rating: {{ provider.rating }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No service providers available yet.</p>
+    {% endif %}
+</body>
+</html>
