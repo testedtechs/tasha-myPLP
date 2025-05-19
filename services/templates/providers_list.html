@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Available Service Providers</h1>
+  
+  {% if providers %}
+    <ul>
+      {% for provider in providers %}
+        <li>{{ provider.name }} - {{ provider.service_type }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No service providers available yet.</p>
+  {% endif %}
+{% endblock %}

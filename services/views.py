@@ -2,8 +2,11 @@ from django.shortcuts import render
 from .models import ServiceProvider
 
 def home(request):
+    return render(request, 'home.html')
+
+def provider_list(request):
     providers = ServiceProvider.objects.all()
-    return render(request, 'home.html', {'service_providers': providers})
+    return render(request, 'provider_list.html', {'providers': providers})
 
 
 from .forms import ServiceProviderForm
@@ -25,3 +28,5 @@ def register_provider(request):
     else:
         form = ServiceProviderForm()
     return render(request, 'services/register_provider.html', {'form': form})
+
+
