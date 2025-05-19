@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Available Service Providers{% endblock %}
+
+{% block content %}
+  <h2>Available Service Providers</h2>
+
+  {% if providers %}
+    <div class="row">
+      {% for provider in providers %}
+        <div class="col-md-4 mt-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ provider.user.username }}</h5>
+              <p class="card-text">
+                <strong>Service:</strong> {{ provider.service_type }}<br>
+                <strong>Location:</strong> {{ provider.location }}<br>
+                <strong>Phone:</strong> {{ provider.phone }}
+              </p>
+              <p class="text-muted">{{ provider.bio }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No service providers available yet.</p>
+  {% endif %}
+{% endblock %}
