@@ -1,52 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Home | TASHA{% endblock %}
 
 {% block content %}
-  <div class="text-center mt-4">
-    <h1>Welcome to TASHA</h1>
-    <p class="lead">Connecting you with trusted service providers in real time.</p>
-    <a href="{% url 'provider_list' %}" class="btn btn-primary mt-3">Find a Provider</a>
-  </div>
+<style>
+    .hero {
+        background-image: url("{% static 'images/hero-bg.png' %}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .hero .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .hero .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* darken image */
+    }
+
+    .hero-content {
+        z-index: 2;
+    }
+</style>
+
+<div class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Welcome to TASHA</h1>
+        <p>Connecting you with trusted local service providers</p>
+        <a href="{% url 'provider_list' %}" class="btn">Find Providers</a>
+    </div>
+</div>
 {% endblock %}
-
-
-<!-- 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Available Service Providers</title>
-</head>
-<body>
-    {% if user.is_authenticated %}
-  Logged in as {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
-{% else %}
-  <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-
-    <h1>Available Service Providers</h1>
-
-    {% if service_providers %}
-        <ul>
-        {% for provider in service_providers %}
-            <li>
-                <strong>{{ provider.name }}</strong> - {{ provider.service_type }}
-                {% if provider.verified %}✔️{% endif %}
-                <br>Phone: {{ provider.phone }}
-                <br>Rating: {{ provider.rating }}
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No service providers available yet.</p>
-    {% endif %}
-</body>
-</html> -->
-
-
-
-
-
-
-

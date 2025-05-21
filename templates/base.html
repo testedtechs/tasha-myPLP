@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
-  <a class="navbar-brand" href="{% url 'home' %}">TASHA</a>
+  <a class="navbar-brand logo" href="{% url 'home' %}">TASHA</a>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ms-auto align-items-center">
@@ -17,7 +19,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'register_provider' %}">Register</a>
+        <a class="nav-link" href="{% url 'register_provider' %}">Register as a Provider</a>
       </li>
 
       {% if user.is_authenticated %}
